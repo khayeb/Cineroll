@@ -1,0 +1,28 @@
+<ngb-carousel
+  [interval]="interval"
+  [pauseOnHover]="pauseOnHover"
+  [pauseOnFocus]="pauseOnFocus"
+>
+  <ng-template ngbSlide *ngFor="let movie of movieService.movies();">
+    <div>
+      <img
+        class="carousel-img"
+        [src]="movie.backdrops[0]"
+        [alt]="movie.title"
+      />
+      <div class="movie-details">
+        <div>
+          <img [src]="movie.poster" class="movie-poster-img" />
+        </div>
+        <div>
+          <fa-icon [icon]="faPlayCircle" class="play-button-icon" (click)="handlePlayButton(movie.imdbId)"></fa-icon>
+        </div>
+        <div>
+          <button type="button" class="btn btn-warning review-btn" (click)="hanldeReviewButton(movie.imdbId)">
+            Reviews
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ngb-carousel>
